@@ -6,10 +6,10 @@ Requirements
 
 Depends on the follwing cookbooks:
 
- build-essential 
- git 
- redis 
- node
+* build-essential 
+* git 
+* redis 
+* node
 
 Attributes
 ==========
