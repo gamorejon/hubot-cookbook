@@ -1,6 +1,6 @@
 Description
 ===========
-This is a Chef cookbook for installing and setting up (http://hubot.github.com/ "HUBOT").
+This is a Chef cookbook for installing and setting up [HUBOT](http://hubot.github.com/ "HUBOT").
 
 Requirements
 ============
