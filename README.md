@@ -1,9 +1,20 @@
 Description
 ===========
+This is a Chef cookbook for installing and setting up (http://hubot.github.com/ "HUBOT").
 
 Requirements
 ============
 
+Platforms
+---------
+
+The following platforms are supported by this cookbook, meaning that the recipes run on these platforms without error.
+
+* Debian
+* Ubuntu
+
+Opscode Cookbooks
+-----------------
 Depends on the follwing cookbooks:
 
 * build-essential 
@@ -11,8 +22,25 @@ Depends on the follwing cookbooks:
 * redis 
 * node
 
+To use with campfire you must first create an account for hubot to use, and then create 
+a data bag called hubot with the following schema:
+  {
+    "id": "campfire",
+    "account": "hubot_account",
+    "token": "your_api_token",
+    "rooms" : ["Room1","Room2",...]
+  }
+
 Attributes
 ==========
+
+* `node[:hubot][:version]` - Version
+* `node[:hubot][:dir]`     - Installation directory
+* `node[:hubot][:bin]`     - location of hubot bin
+* `node[:hubot][:user]`    - hubot user
+* `node[:hubot][:group]`   - hubot group
+* `node[:hubot][:port]`    - hubot's port
+* `node[:hubot][:adapter]` - adapter to use (currently, only campfire works)
 
 Usage
 ====

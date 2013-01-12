@@ -23,6 +23,7 @@ include_recipe "redis::server"
 include_recipe "node"
 
 package "libexpat1-dev"
+package "libssl-dev"
 
 node_npm "coffee-script"
 
@@ -30,4 +31,22 @@ git "/opt/hubot" do
   repository "git://github.com/github/hubot.git"
   revision node[:hubot][:version]
   action :sync
+end
+
+campfire = data_bag_item('hubot','campfire')
+template "/etc/init/hubot.conf" do
+  source "hubot.conf.erb"
+  owner  "root"
+  group  "root"
+  mode   0744
+  variables :campfire => campfire
+end
+
+bash "install hubot" do
+  user  "root"
+  group "root"
+  code <<-EOS
+    cd /opt/hubot
+    npm install
+  EOS
 end
